@@ -1,0 +1,34 @@
+.color(0, 0, 0);
+.line(0, 40, 10, 10);
+.color(255, 255, 255);
+.circle(0, 40, 10);
+.color(0, 0, 255);
+.rectangle(0, 0, 10, 10);
+.color(5, 38, 1);
+.text(10, 10, 10, "Hello World");
+
+// Testing out a comment
+if ({CLOCK} <= " 1337 ") {
+    .text(10, 10, 10, "Hello World2");
+    if ({CLOCK} <= "Jag tror detta fungerar!") {
+        .text(0,0,0,"Test");
+    } else {
+        .text(0,0,0,"Fast fungerar det verkligen");
+    }
+} else if ({CLOCK} <= "13:37") {
+    .line(10, 10, 10, 666);
+    for (1 to 101) {
+        .text(10, 10, 10, "Hello World1337");
+    }
+} else {
+    .circle(0,0,0);
+}
+
+if ({CLOCK} = ":hej1 1-_:") {
+    .text(10, 10, 10, "Hello World2");
+}
+.text(10, 10, 10, "Hello World3");
+
+for (1 to 10) {
+    .text(10, 10, 10, "Hello World1337");
+}
