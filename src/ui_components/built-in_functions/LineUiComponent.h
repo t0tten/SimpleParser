@@ -9,12 +9,11 @@ class LineUiComponent: public UiComponent {
     private:
         /* VARIABLES */
         int x,y;
-        int length;
-        int thickness;
+        int xx, yy;
 
         /* FUNCTIONS */
         LineUiComponent(UiType::TYPE type);
-        LineUiComponent(UiType::TYPE type, int x, int y, int length, int thickness);
+        LineUiComponent(UiType::TYPE type, int x, int y, int xx, int yy);
         virtual std::string toStringAppendix();
     public:
         ~LineUiComponent();
