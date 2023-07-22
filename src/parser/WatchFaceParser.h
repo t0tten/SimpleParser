@@ -26,7 +26,7 @@ class WatchFaceParser {
 
         /* Functions */
         std::vector<std::string> split(const std::string& filecontent, char delimiter);
-        bool translateBuiltIns(ArithmeticUiComponent* parent, UiType::TYPE type, std::string values);
+        bool translate(ArithmeticUiComponent* parent, UiType::TYPE type, std::vector<std::string> fileContent, int& i);
         int parse(ArithmeticUiComponent* parent, std::vector<std::string> filecontent, int start);
 
     public:
