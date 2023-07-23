@@ -10,7 +10,7 @@ class ArithmeticException: public Exception {
         std::string regex;
 
     public:
-        ArithmeticException(std::string statement, std::string regex);
+        ArithmeticException(std::string statement);
         std::string getMessage();
 };
 

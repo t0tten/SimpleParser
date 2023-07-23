@@ -54,7 +54,7 @@ RegexMatcher::RegexMatcher() {
     /* BUILT-IN FUNCTIONS */
     this->regexTypes.push_back(new UiRegex(UiType::LINE, "[ ]*\\.line[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*", "\\);[ ]*$"));
     this->regexTypes.push_back(new UiRegex(UiType::CIRCLE,"[ ]*\\.circle[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*", "\\);[ ]*$"));
-    this->regexTypes.push_back(new UiRegex(UiType::TEXT, "[ ]*\\.text[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*\"[a-zA-Z0-9 ,\\.-:_!#%&]*\"[ ]*", "\\);[ ]*$"));
+    this->regexTypes.push_back(new UiRegex(UiType::TEXT, "[ ]*\\.text[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*\"[a-zA-Z0-9 \\{\\},\\.\\-:_!#%&?]*\"[ ]*", "\\);[ ]*$"));
     this->regexTypes.push_back(new UiRegex(UiType::RECTANGLE, "[ ]*\\.rectangle[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*", "\\);[ ]*$"));
     this->regexTypes.push_back(new UiRegex(UiType::COLOR,"[ ]*\\.color[ ]*\\(", "[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*,[ ]*[0-9]+[ ]*", "\\);[ ]*$"));
 }

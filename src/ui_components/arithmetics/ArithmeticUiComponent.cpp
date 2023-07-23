@@ -1,7 +1,7 @@
 #include "ArithmeticUiComponent.h"
 
 /* PRIVATE */
-std::string ArithmeticUiComponent::toStringAppendix() {
+std::string ArithmeticUiComponent::toStringAppendix(std::string tabs) {
     return "";
 }
 
@@ -25,4 +25,16 @@ void ArithmeticUiComponent::addCodeBlockComponent(UiComponent* component) {
 
 ArithmeticUiComponent* ArithmeticUiComponent::empty() {
     return new ArithmeticUiComponent(UiType::NOOP);
+}
+
+void ArithmeticUiComponent::execute() {
+    for (int i = 0; i < this->codeBlock.size(); i++) {
+        this->codeBlock[i]->execute();
+    }
+}
+
+void ArithmeticUiComponent::executeCodeBlock() {
+    for (int i = 0; i < this->codeBlock.size(); i++) {
+        this->codeBlock[i]->execute();
+    }
 }

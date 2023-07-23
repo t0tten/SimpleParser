@@ -7,10 +7,10 @@ ColorUiComponent::ColorUiComponent(UiType::TYPE type, int r, int g, int b): UiCo
     this->b = b;
 }
 
-std::string ColorUiComponent::toStringAppendix() {
-    return  "\tR: " + std::to_string(this->r) + "\n" + \
-            "\tG: " + std::to_string(this->g) + "\n" + \
-            "\tB: " + std::to_string(this->b) + "\n";
+std::string ColorUiComponent::toStringAppendix(std::string tabs) {
+    return  tabs + "R: " + std::to_string(this->r) + "\n" + \
+            tabs + "G: " + std::to_string(this->g) + "\n" + \
+            tabs + "B: " + std::to_string(this->b) + "\n";
 }
 
 /* PUBLIC */
@@ -21,4 +21,8 @@ UiComponent* ColorUiComponent::parseValues(std::vector<std::string> values) {
     int g = std::stoi(values.at(1));
     int b = std::stoi(values.at(2));
     return new ColorUiComponent(UiType::COLOR, r, g, b);
+}
+
+void ColorUiComponent::execute() {
+    std::cout << "Changing color" << std::endl;
 }

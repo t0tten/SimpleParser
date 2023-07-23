@@ -9,11 +9,11 @@ RectangleUiComponent::RectangleUiComponent(UiType::TYPE type, int x, int y, int 
     this->yy = yy;
 }
 
-std::string RectangleUiComponent::toStringAppendix() {
-    return "\tX: " + std::to_string(this->x) + "\n" + \
-        "\tY: " + std::to_string(this->y) + "\n" + \
-        "\tXX: " + std::to_string(this->xx) + "\n" +  \
-        "\tYY: " + std::to_string(this->yy) + "\n";
+std::string RectangleUiComponent::toStringAppendix(std::string tabs) {
+    return tabs + "X: " + std::to_string(this->x) + "\n" + \
+        tabs + "Y: " + std::to_string(this->y) + "\n" + \
+        tabs + "XX: " + std::to_string(this->xx) + "\n" +  \
+        tabs + "YY: " + std::to_string(this->yy) + "\n";
 }
 
 /* PUBLIC */
@@ -25,4 +25,8 @@ UiComponent* RectangleUiComponent::parseValues(std::vector<std::string> values) 
     int xx = std::stoi(values.at(2));
     int yy = std::stoi(values.at(3));
     return new RectangleUiComponent(UiType::RECTANGLE, x, y, xx, yy);
+}
+
+void RectangleUiComponent::execute() {
+    std::cout << "Drawing rectangle" << std::endl;
 }

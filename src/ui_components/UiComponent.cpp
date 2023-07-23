@@ -10,7 +10,7 @@ UiComponent::UiComponent(UiType::TYPE type) {
 /* PUBLIC */
 UiComponent::~UiComponent() {}
 
-std::string UiComponent::toString() {
+std::string UiComponent::toString(std::string tabs) {
     std::string strType = "";
     switch(this->type) {
         case UiType::LINE:
@@ -37,5 +37,7 @@ std::string UiComponent::toString() {
         default:
             break;
     }
-    return "TYPE: " + strType + "\n" + this->toStringAppendix();
+
+    tabs += "\t";
+    return  "TYPE: " + strType + "\n" + this->toStringAppendix(tabs);
 }

@@ -20,6 +20,13 @@ void Pinetime::printWatchFaceInformation() {
     }
 }
 
+void Pinetime::executeWatchFace() {
+    if (this->watchFace != NULL) {
+        
+        this->watchFace->execute();
+    }
+}
+
 bool Pinetime::loadWatchFace(std::string filename) {
     if (this->fileManagement->loadFile(filename)) {
         std::vector<std::string> fileContent = this->fileManagement->getFilecontent();

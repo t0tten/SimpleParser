@@ -14,11 +14,12 @@ class RectangleUiComponent: public UiComponent {
         /* FUNCTIONS */
         RectangleUiComponent(UiType::TYPE type);
         RectangleUiComponent(UiType::TYPE type, int x, int y, int xx, int yy);
-        virtual std::string toStringAppendix();
+        virtual std::string toStringAppendix(std::string tabs);
     public:
         ~RectangleUiComponent();
 
         static UiComponent* parseValues(std::vector<std::string> values);
+        virtual void execute();
 };
 
 #endif // _RECTANGLE_UI_COMPONENT_H_

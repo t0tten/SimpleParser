@@ -6,7 +6,7 @@
 class ArithmeticUiComponent: public UiComponent {
     private:
         /* FUNCTIONS */
-        virtual std::string toStringAppendix();
+        virtual std::string toStringAppendix(std::string tabs);
 
     protected:
         /* VARIABLES */
@@ -15,11 +15,14 @@ class ArithmeticUiComponent: public UiComponent {
         /* FUNCTIONS */
         ArithmeticUiComponent(UiType::TYPE type);
 
+        void executeCodeBlock();
+
     public:
         ~ArithmeticUiComponent();
         std::vector<UiComponent*>& getCodeBlock();
         void addCodeBlockComponent(UiComponent* component);
         static ArithmeticUiComponent* empty();
+        virtual void execute();
 };
 
 #endif // _ARITHMETICS_UI_COMPONENT_H

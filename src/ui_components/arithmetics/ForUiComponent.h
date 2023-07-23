@@ -11,14 +11,14 @@
 class ForUiComponent: public ArithmeticUiComponent {
     private:
         /* VARIABLES */
-        std::string firstComparison, secondComparison;
+        int start, end;
 
         /* FUNCTIONS */
-        ForUiComponent(UiType::TYPE type, std::string firstComparison, std::string secondComparison);
-        virtual std::string toStringAppendix();
+        ForUiComponent(UiType::TYPE type, int start, int end);
+        virtual std::string toStringAppendix(std::string tabs);
     public:
         ~ForUiComponent();
-
+        virtual void execute();
         static ForUiComponent* parseValues(std::string values);
 };
 

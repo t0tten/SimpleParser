@@ -9,11 +9,11 @@ LineUiComponent::LineUiComponent(UiType::TYPE type, int x, int y, int xx, int yy
     this->yy = yy;
 }
 
-std::string LineUiComponent::toStringAppendix() {
-    return "\tX: " + std::to_string(this->x) + "\n" + \
-        "\tY: " + std::to_string(this->y) + "\n" + \
-        "\tXX: " + std::to_string(this->xx) + "\n" +  \
-        "\tYY: " + std::to_string(this->yy) + "\n";
+std::string LineUiComponent::toStringAppendix(std::string tabs) {
+    return tabs + "X: " + std::to_string(this->x) + "\n" + \
+        tabs + "Y: " + std::to_string(this->y) + "\n" + \
+        tabs + "XX: " + std::to_string(this->xx) + "\n" +  \
+        tabs + "YY: " + std::to_string(this->yy) + "\n";
 }
 
 /* PUBLIC */
@@ -25,5 +25,8 @@ UiComponent* LineUiComponent::parseValues(std::vector<std::string> values) {
     int xx = std::stoi(values.at(2));
     int yy = std::stoi(values.at(3));
     return new LineUiComponent(UiType::LINE, x, y, xx, yy);
-    //return new LineUiComponent(UiType::LINE, 0, 0, 0, 0);
+}
+
+void LineUiComponent::execute() {
+    std::cout << "Drawing line" << std::endl;
 }

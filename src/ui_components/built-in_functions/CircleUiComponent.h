@@ -12,11 +12,12 @@ class CircleUiComponent: public UiComponent {
 
         /* FUNCTIONS */
         CircleUiComponent(UiType::TYPE type, int x, int y, int radius);
-        virtual std::string toStringAppendix();
+        virtual std::string toStringAppendix(std::string tabs);
 
     public:
         virtual ~CircleUiComponent();
         static UiComponent* parseValues(std::vector<std::string> values);
+        virtual void execute();
 };
 
 #endif // _CIRCLE_UI_COMPONENT_H_

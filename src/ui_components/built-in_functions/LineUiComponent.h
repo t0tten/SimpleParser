@@ -14,11 +14,12 @@ class LineUiComponent: public UiComponent {
         /* FUNCTIONS */
         LineUiComponent(UiType::TYPE type);
         LineUiComponent(UiType::TYPE type, int x, int y, int xx, int yy);
-        virtual std::string toStringAppendix();
+        virtual std::string toStringAppendix(std::string tabs);
     public:
         ~LineUiComponent();
 
         static UiComponent* parseValues(std::vector<std::string> values);
+        virtual void execute();
 };
 
 #endif // _LINE_UI_COMPONENT_H_

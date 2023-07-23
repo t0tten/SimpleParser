@@ -13,14 +13,15 @@ class UiComponent {
         
         /* FUNCTIONS */
         UiComponent();
-        virtual std::string toStringAppendix() = 0;
+        virtual std::string toStringAppendix(std::string tabs) = 0;
 
     protected:
         UiComponent(UiType::TYPE type);
 
     public:
         virtual ~UiComponent();
-        std::string toString();
+        std::string toString(std::string tabs);
+        virtual void execute() = 0;
 };
 
 #endif // _UI_COMPONENT_H_

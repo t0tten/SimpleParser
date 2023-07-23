@@ -14,6 +14,7 @@ class WatchFace {
         ~WatchFace();
 
         std::string toString();
+        void execute();
 };
 
 #endif //_WATCH_FACE_H_

@@ -21,6 +21,7 @@ class Pinetime {
 
         void printWatchFaceInformation();
         bool loadWatchFace(std::string filename);
+        void executeWatchFace();
 };
 
 #endif // _PINETIME_H_

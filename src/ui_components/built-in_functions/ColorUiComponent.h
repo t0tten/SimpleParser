@@ -11,11 +11,12 @@ class ColorUiComponent: public UiComponent {
 
         /* FUNCTIONS */
         ColorUiComponent(UiType::TYPE type, int r, int g, int b);
-        virtual std::string toStringAppendix();
+        virtual std::string toStringAppendix(std::string tabs);
 
     public:
         virtual ~ColorUiComponent();
         static UiComponent* parseValues(std::vector<std::string> values);
+        virtual void execute();
 };
 
 #endif // _COLOR_UI_COMPONENT_H_

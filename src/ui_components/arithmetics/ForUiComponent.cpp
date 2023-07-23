@@ -1,17 +1,19 @@
 #include "ForUiComponent.h"
 
 /* PRIVATE */
-ForUiComponent::ForUiComponent(UiType::TYPE type, std::string firstComparison, std::string secondComparison): ArithmeticUiComponent(type) {
-    this->firstComparison = firstComparison;
-    this->secondComparison = secondComparison;
+ForUiComponent::ForUiComponent(UiType::TYPE type, int start, int end): ArithmeticUiComponent(type) {
+    this->start = start;
+    this->end = end;
 }
 
-std::string ForUiComponent::toStringAppendix() {
-    std::string retVal = "\tFIRST COMPARISON: " + this->firstComparison + "\n";
-    retVal += "\tSECOND COMPARISON: " + this->secondComparison + "\n";
-    retVal += "\tCODE BLOCK:\n ";
+std::string ForUiComponent::toStringAppendix(std::string tabs) {
+    std::string retVal = tabs + "FIRST COMPARISON: " + std::to_string(this->start) + "\n";
+    retVal += tabs + "SECOND COMPARISON: " + std::to_string(this->end) + "\n";
+    retVal += tabs + "CODE BLOCK:\n ";
+    
+    tabs += "\t";
     for (int i = 0; i < this->codeBlock.size(); i++) {
-        retVal += "\t" + this->codeBlock[i]->toString();
+        retVal += "\t" + this->codeBlock[i]->toString(tabs);
     }
     return retVal;
 }
@@ -19,14 +21,22 @@ std::string ForUiComponent::toStringAppendix() {
 /* PUBLIC */
 ForUiComponent::~ForUiComponent() {}
 
+void ForUiComponent::execute() {
+    for (int i = this->start; i < this->end; i++) {
+        this->executeCodeBlock();
+    }
+}
+
 /* STATIC */
 ForUiComponent* ForUiComponent::parseValues(std::string statement) {
     ForRegexMatcher regexMatcher;
     if (regexMatcher.validateString(statement)) {
         std::vector<std::string> comparers = regexMatcher.split(statement);
-        return new ForUiComponent(UiType::FOR, comparers.at(0), comparers.at(1));
+        int start = std::stoi(comparers.at(0));
+        int end = std::stoi(comparers.at(1));
+        return new ForUiComponent(UiType::FOR, start, end);
     } else {
-        throw ArithmeticException(statement, regexMatcher.getRegex());
+        throw ArithmeticException(statement);
     }
     return NULL;
 }
