@@ -24,44 +24,33 @@ bool WatchFaceParser::translate(ArithmeticUiComponent* parent, UiType::TYPE type
             parent->addCodeBlockComponent(ColorUiComponent::parseValues(valuesArray));
             break;
         case UiType::IF:
-            {
-                IfUiComponent* ifStatement = IfUiComponent::parseValues(parameters);
-                parent->addCodeBlockComponent(ifStatement);
-                i = this->parse(ifStatement, fileContent, ++i);
-            }
-            break;
+            return this->addCodeBlockComponent(parent, IfUiComponent::parseValues(parameters), fileContent, i);
         case UiType::ELSE_IF:
-            {
-                IfUiComponent* ifStatement = dynamic_cast<IfUiComponent*>(parent);
-                if (ifStatement != nullptr) {
-                    IfUiComponent* elseIfStatement = IfUiComponent::parseValues(parameters);
-                    ifStatement->addIfComponent(elseIfStatement);
-                    i = this->parse(elseIfStatement, fileContent, ++i);
-                    return true;
-                }
-            }
+            return this->addIfComponent(parent, IfUiComponent::parseValues(parameters), fileContent, i);
         case UiType::ELSE:
-            {
-                IfUiComponent* ifStatement = dynamic_cast<IfUiComponent*>(parent);
-                if (ifStatement != nullptr) {
-                    IfUiComponent* elseStatement = IfUiComponent::emptyValues();
-                    ifStatement->addIfComponent(elseStatement);
-                    i = this->parse(elseStatement, fileContent, ++i);
-                    return true;
-                }
-            }
+            return this->addIfComponent(parent, IfUiComponent::emptyValues(), fileContent, i);
         case UiType::FOR:
-            {
-                ForUiComponent* forLoop = ForUiComponent::parseValues(parameters);
-                parent->addCodeBlockComponent(forLoop);
-                i = this->parse(forLoop, fileContent, ++i);
-            }
-            break;
+            return this->addCodeBlockComponent(parent, ForUiComponent::parseValues(parameters), fileContent, i);
         case UiType::ARI_END:
         default:
-            return true;
+            return false;
+    }
+    return true;
+}
+
+bool WatchFaceParser::addIfComponent(ArithmeticUiComponent* parent, IfUiComponent* component, std::vector<std::string> fileContent, int& i) {
+    IfUiComponent* ifStatement = dynamic_cast<IfUiComponent*>(parent);
+    if (ifStatement != nullptr) {
+        ifStatement->addIfComponent(component);
+        i = this->parse(component, fileContent, ++i);
     }
     return false;
+}
+
+bool WatchFaceParser::addCodeBlockComponent(ArithmeticUiComponent* parent, ArithmeticUiComponent* component, std::vector<std::string> fileContent, int& i) {
+    parent->addCodeBlockComponent(component);
+    i = this->parse(component, fileContent, ++i);
+    return true;
 }
 
 std::vector<std::string> WatchFaceParser::split(const std::string& filecontent, char delimiter) {
@@ -82,7 +71,7 @@ int WatchFaceParser::parse(ArithmeticUiComponent* parent, std::vector<std::strin
     for (; i < fileContent.size(); i++) {
         type = this->regexMatcher->match(fileContent[i]);
         std::string arithmetic = this->regexMatcher->getValues(type, fileContent[i]);
-        if (type == UiType::MISSING || this->translate(parent, type, fileContent, i)) {
+        if (type == UiType::MISSING || !this->translate(parent, type, fileContent, i)) {
             break;
         }
     }

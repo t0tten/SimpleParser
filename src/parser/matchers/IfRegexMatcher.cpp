@@ -6,7 +6,18 @@ IfRegexMatcher::IfRegexMatcher() {
     this->regexOperators = "[><=!][=]?";
     this->suffix = "[ ]*[\\{\"]?" + this->text + "+[\\}\"]?";
     
-    comparisonRegex.push_back("\\{CLOCK\\}");
+    comparisonRegex.push_back("\\{CLK\\}");
+    comparisonRegex.push_back("\\{CLK_HOUR\\}");
+    comparisonRegex.push_back("\\{CLK_MIN\\}");
+    comparisonRegex.push_back("\\{CLK_SEC\\}");
+    comparisonRegex.push_back("\\{DATE\\}");
+    comparisonRegex.push_back("\\{DATE_YEAR\\}");
+    comparisonRegex.push_back("\\{DATE_MONTH\\}");
+    comparisonRegex.push_back("\\{DATE_DAY\\}");
+    comparisonRegex.push_back("\\{STEPS\\}");
+    comparisonRegex.push_back("\\{HEART\\}");
+    comparisonRegex.push_back("\\{BT\\}");
+    comparisonRegex.push_back("\\{BATT\\}");
     comparisonRegex.push_back("\"" + this->text + "*\"");
     comparisonRegex.push_back("true");
     comparisonRegex.push_back("false");

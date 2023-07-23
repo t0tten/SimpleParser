@@ -28,6 +28,8 @@ class WatchFaceParser {
         std::vector<std::string> split(const std::string& filecontent, char delimiter);
         bool translate(ArithmeticUiComponent* parent, UiType::TYPE type, std::vector<std::string> fileContent, int& i);
         int parse(ArithmeticUiComponent* parent, std::vector<std::string> filecontent, int start);
+        bool addCodeBlockComponent(ArithmeticUiComponent* parent, ArithmeticUiComponent* component, std::vector<std::string> fileContent, int& i);
+        bool addIfComponent(ArithmeticUiComponent* parent, IfUiComponent* component, std::vector<std::string> fileContent, int& i);
 
     public:
         WatchFaceParser ();

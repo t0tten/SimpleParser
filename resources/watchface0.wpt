@@ -8,23 +8,23 @@
 .text(10, 10, 10, "Hello World");
 
 // Testing out a comment
-if ({CLOCK} <= " 1337 ") {
+if ({DATE_YEAR} <= " 1337 ") {
     .text(10, 10, 10, "Hello World2");
-    if ({CLOCK} <= "Jag tror detta fungerar!") {
+    if ({HEART} <= "Jag tror detta fungerar!") {
         .text(0,0,0,"Test");
     } else {
         .text(0,0,0,"Fast fungerar det verkligen");
     }
-} else if ({CLOCK} <= "13:37") {
+} else if ({CLK} <= "13:37") {
     .line(10, 10, 10, 666);
     for (1 to 101) {
-        .text(10, 10, 10, "Hello World1337");
+        .text (10, 10, 10, "Hello World1337");
     }
 } else {
     .circle(0,0,0);
 }
 
-if ({CLOCK} = ":hej1 1-_:") {
+if ({BT} = true) {
     .text(10, 10, 10, "Hello World2");
 }
 .text(10, 10, 10, "Hello World3");
