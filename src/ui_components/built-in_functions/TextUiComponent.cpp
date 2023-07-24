@@ -21,9 +21,6 @@ TextUiComponent::~TextUiComponent() {
 }
 
 UiComponent* TextUiComponent::parseValues(std::vector<std::string> values) {
-    /*int x = std::stoi(values.at(0));
-    int y = std::stoi(values.at(1));
-    int thickness = std::stoi(values.at(2));*/
     VariableUiComponent* text = StringVariableUiComponent::create(UiType::STRING, values.at(3));
     return new TextUiComponent(UiType::TEXT, values.at(0), values.at(1), values.at(2), text);
 }

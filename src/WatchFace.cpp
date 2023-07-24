@@ -6,9 +6,8 @@ WatchFace::WatchFace(std::string name, ArithmeticUiComponent* root) {
 }
 
 WatchFace::~WatchFace() {
-    std::vector<UiComponent*> codeBlock = this->root->getCodeBlock();
-    for (int i = 0; i < codeBlock.size(); i++) {
-        delete codeBlock[i];
+    if (this->root != NULL) {
+        delete this->root;
     }
 }
 

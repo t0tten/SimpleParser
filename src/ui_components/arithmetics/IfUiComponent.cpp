@@ -67,6 +67,10 @@ IfUiComponent::~IfUiComponent() {
     if (this->component2 != NULL) {
         delete this->component2;
     }
+
+    for (int i = 0; i < ifComponents.size(); i++) {
+        delete ifComponents[i];
+    }
 }
 
 void IfUiComponent::addIfComponent(IfUiComponent* ifComponent) {

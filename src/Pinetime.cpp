@@ -30,7 +30,7 @@ bool Pinetime::loadWatchFace(std::string filename) {
     if (this->fileManagement->loadFile(filename)) {
         std::string filecontent = this->fileManagement->getFilecontent();
         try {
-            WatchFace* watchFace =this->watchFaceParser->generateWatchFace(filename, filecontent);
+            WatchFace* watchFace = this->watchFaceParser->generateWatchFace(filename, filecontent);
             if (watchFace != NULL) {
                 this->watchFace = watchFace;
                 return true;
