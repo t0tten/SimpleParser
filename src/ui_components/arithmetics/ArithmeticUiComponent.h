@@ -15,14 +15,14 @@ class ArithmeticUiComponent: public UiComponent {
         /* FUNCTIONS */
         ArithmeticUiComponent(UiType::TYPE type);
 
-        void executeCodeBlock();
+        void executeCodeBlock(UiComponent* component);
 
     public:
         ~ArithmeticUiComponent();
         std::vector<UiComponent*>& getCodeBlock();
         void addCodeBlockComponent(UiComponent* component);
         static ArithmeticUiComponent* empty();
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 };
 
 #endif // _ARITHMETICS_UI_COMPONENT_H

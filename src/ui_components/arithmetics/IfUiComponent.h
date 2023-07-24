@@ -33,7 +33,7 @@ class IfUiComponent: public ArithmeticUiComponent {
     public:
         ~IfUiComponent();
         void addIfComponent(IfUiComponent* ifComponent);
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 
         static IfUiComponent* parseValues(std::string values);
         static IfUiComponent* emptyValues();

@@ -19,7 +19,7 @@ ClockVariableUiComponent::ClockVariableUiComponent(UiType::TYPE type, std::strin
 /* PUBLIC */
 ClockVariableUiComponent::~ClockVariableUiComponent() {}
 
-std::string ClockVariableUiComponent::getValue() {
+std::string ClockVariableUiComponent::getValue(UiComponent* component) {
     this->hours = "13";
     this->minutes = "37";
     this->seconds = "00";

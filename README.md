@@ -133,6 +133,6 @@ for (<INT> to <INT>) {
     ...
 }
 ```
-Repeatively execute the code within the code block **DELTA** number of times.
+Repeatively execute the code within the code block **DELTA** number of times. Use {i} to get an index of current run.
 
 **DELTA:** (second INT - first INT)

@@ -13,7 +13,7 @@ BatteryVariableUiComponent::BatteryVariableUiComponent(UiType::TYPE type, std::s
 /* PUBLIC */
 BatteryVariableUiComponent::~BatteryVariableUiComponent() {}
 
-std::string BatteryVariableUiComponent::getValue() {
+std::string BatteryVariableUiComponent::getValue(UiComponent* component) {
     std::string batteryPercentage = "96";
     return batteryPercentage;
 }

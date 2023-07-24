@@ -20,6 +20,7 @@ VariableRegexMatcher::VariableRegexMatcher() {
     this->regexTypes.push_back(new UiRegex(UiType::DATE_MONTH, "\\{", "DATE_MONTH", "\\}"));
     this->regexTypes.push_back(new UiRegex(UiType::DATE_DAY, "\\{", "DATE_DAY", "\\}"));
     this->regexTypes.push_back(new UiRegex(UiType::STEPS, "\\{", "STEPS", "\\}"));
+    this->regexTypes.push_back(new UiRegex(UiType::INDEX, "\\{", "i", "\\}"));
 }
 
 VariableRegexMatcher::~VariableRegexMatcher() {

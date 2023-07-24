@@ -13,7 +13,7 @@ HeartVariableUiComponent::HeartVariableUiComponent(UiType::TYPE type, std::strin
 /* PUBLIC */
 HeartVariableUiComponent::~HeartVariableUiComponent() {}
 
-std::string HeartVariableUiComponent::getValue() {
+std::string HeartVariableUiComponent::getValue(UiComponent* component) {
     std::string heartBeat = "72";
     return heartBeat;
 }

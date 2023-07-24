@@ -27,6 +27,6 @@ UiComponent* RectangleUiComponent::parseValues(std::vector<std::string> values) 
     return new RectangleUiComponent(UiType::RECTANGLE, x, y, xx, yy);
 }
 
-void RectangleUiComponent::execute() {
+void RectangleUiComponent::execute(UiComponent* component) {
     std::cout << "Drawing rectangle" << std::endl;
 }

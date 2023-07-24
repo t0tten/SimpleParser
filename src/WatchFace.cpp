@@ -23,6 +23,6 @@ std::string WatchFace::toString() {
 
 void WatchFace::execute() {
     if (this->root != NULL) {
-        this->root->execute();
+        this->root->execute(NULL);
     }
 }

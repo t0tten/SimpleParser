@@ -8,19 +8,19 @@
 class TextUiComponent: public UiComponent {
     private:
         /* VARIABLES */
-        int x, y;
-        int thickness;
+        std::string x, y;
+        std::string thickness;
         VariableUiComponent* text;
 
         /* FUNCTIONS */
-        TextUiComponent(UiType::TYPE type, int x, int y, int thickness, VariableUiComponent* text);
+        TextUiComponent(UiType::TYPE type, std::string x, std::string y, std::string thickness, VariableUiComponent* text);
         virtual std::string toStringAppendix(std::string tabs);
 
     public:
         virtual ~TextUiComponent();
 
         static UiComponent* parseValues(std::vector<std::string> values);
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 };
 
 #endif // _TEXT_UI_COMPONENT_H_

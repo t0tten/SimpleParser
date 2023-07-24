@@ -8,8 +8,8 @@ IfUiComponent::IfUiComponent(UiType::TYPE type, std::string op, VariableUiCompon
 }
 
 std::string IfUiComponent::toStringAppendix(std::string tabs) {
-    std::string comp1 = (this->component1 != NULL) ? this->component1->getValue() : "";
-    std::string comp2 = (this->component1 != NULL) ? this->component1->getValue() : "";
+    std::string comp1 = (this->component1 != NULL) ? this->component1->getValue(NULL) : "";
+    std::string comp2 = (this->component1 != NULL) ? this->component1->getValue(NULL) : "";
     std::string retVal = tabs + "OPERATION: " + this->op + "\n";
     retVal += tabs + "FIRST COMPARISON: " + comp1 + "\n";
     retVal += tabs + "SECOND COMPARISON: " + comp2 + "\n";
@@ -75,11 +75,11 @@ void IfUiComponent::addIfComponent(IfUiComponent* ifComponent) {
 
 void IfUiComponent::continueWithNextIfStatement() {
     for (int i = 0; i < this->ifComponents.size(); i++) {
-        this->ifComponents[i]->execute();
+        this->ifComponents[i]->execute(NULL);
     }
 }
 
-void IfUiComponent::execute() {
+void IfUiComponent::execute(UiComponent* component) {
     bool isExperssionTrue = false;
     if (this->component1 != NULL && this->component2 != NULL) {
         //std::cout << "Comparing: " << this->component1->getValue() << " " << this->op << " " << this->component2->getValue() << std::endl;
@@ -87,8 +87,8 @@ void IfUiComponent::execute() {
         int comparer1 = -1;
         int comparer2 = -1;
         if (this->op != "=" && this->op != "!=") {
-            comparer1 = std::stoi(this->component1->getValue());
-            comparer2 = std::stoi(this->component2->getValue());
+            comparer1 = std::stoi(this->component1->getValue(component));
+            comparer2 = std::stoi(this->component2->getValue(component));
         }
         
         if (this->op == "<") {
@@ -108,11 +108,11 @@ void IfUiComponent::execute() {
                 isExperssionTrue = true;
             }
         } else if (this->op == "=") {
-            if (this->component1->getValue() == this->component2->getValue()) {
+            if (this->component1->getValue(component) == this->component2->getValue(component)) {
                 isExperssionTrue = true;
             }
         } else if (this->op == "!=") {
-            if (this->component1->getValue() != this->component2->getValue()) {
+            if (this->component1->getValue(component) != this->component2->getValue(component)) {
                 isExperssionTrue = true;
             }
         }
@@ -121,7 +121,7 @@ void IfUiComponent::execute() {
     }
 
     if (isExperssionTrue) {
-        this->executeCodeBlock();
+        this->executeCodeBlock(component);
     } else {
         this->continueWithNextIfStatement();
     }

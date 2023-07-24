@@ -2,6 +2,7 @@
 #define _VARIABLE_UI_COMPONENT_H_
 
 #include "../../parser/types/UiType.h"
+#include "..//UiComponent.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,7 +20,7 @@ class VariableUiComponent {
 
     public:
         virtual ~VariableUiComponent();
-        virtual std::string getValue() = 0;
+        virtual std::string getValue(UiComponent* component) = 0;
 };
 
 #endif // _VARIABLE_UI_COMPONENT_H_

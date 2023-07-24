@@ -17,7 +17,7 @@ class CircleUiComponent: public UiComponent {
     public:
         virtual ~CircleUiComponent();
         static UiComponent* parseValues(std::vector<std::string> values);
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 };
 
 #endif // _CIRCLE_UI_COMPONENT_H_

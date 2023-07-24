@@ -21,10 +21,22 @@ std::string ForUiComponent::toStringAppendix(std::string tabs) {
 /* PUBLIC */
 ForUiComponent::~ForUiComponent() {}
 
-void ForUiComponent::execute() {
-    for (int i = this->start; i < this->end; i++) {
-        this->executeCodeBlock();
+void ForUiComponent::execute(UiComponent* component) {
+    if ((this->end - this->start) >= 0) {
+        for (int i = this->start; i < this->end; i++) {
+            this->index = i;
+            this->executeCodeBlock(this);
+        }
+    } else {
+        for (int i = this->start; i > this->end; i--) {
+            this->index = i;
+            this->executeCodeBlock(this);
+        }
     }
+}
+
+int ForUiComponent::getIndex() {
+    return this->index;
 }
 
 /* STATIC */

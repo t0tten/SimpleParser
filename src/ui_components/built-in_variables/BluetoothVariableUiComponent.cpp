@@ -14,7 +14,7 @@ BluetoothVariableUiComponent::BluetoothVariableUiComponent(UiType::TYPE type, st
 /* PUBLIC */
 BluetoothVariableUiComponent::~BluetoothVariableUiComponent() {}
 
-std::string BluetoothVariableUiComponent::getValue() {
+std::string BluetoothVariableUiComponent::getValue(UiComponent* component) {
     std::string isConnected = "true";
     return isConnected;
 }

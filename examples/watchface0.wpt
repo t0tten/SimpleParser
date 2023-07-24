@@ -19,13 +19,18 @@ if ({DATE_FULL} = "Test") {
 if ({HEART} < "13") {
     .text(0,0,0,"Should not draw");
 } else if ({HEART} = "{HEART}") {
-    for (0 to 5) {
-        .text(0,0,0,"Should draw3 ");
+    for (10 to 1) {
+        // Testing out indencies
+        .text(0, {i}, 0,"LOOP1 with index: {i}");
+        for (1 to 5) {
+            .text({i},0,0,"LOOP2 with index: {i}");
+        }
     }
 } else {
     .circle(0,0,0);
 }
 
+// Testing all the built-in variables
 .text(0,0,0,"Clock: {CLK}");
 .text(0,0,0,"Clock: {CLK_FULL}");
 .text(0,0,0,"Clock: {CLK_HOUR}");

@@ -21,7 +21,7 @@ DateVariableUiComponent::DateVariableUiComponent(UiType::TYPE type, std::string 
 /* PUBLIC */
 DateVariableUiComponent::~DateVariableUiComponent() {}
 
-std::string DateVariableUiComponent::getValue() {
+std::string DateVariableUiComponent::getValue(UiComponent* component) {
     this->fullYear = "2023";
     this->year = "23";
     this->month = "07";

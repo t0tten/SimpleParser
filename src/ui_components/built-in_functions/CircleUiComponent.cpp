@@ -23,6 +23,6 @@ UiComponent* CircleUiComponent::parseValues(std::vector<std::string> values) {
     return new CircleUiComponent(UiType::CIRCLE, x, y, radius);
 }
 
-void CircleUiComponent::execute() {
+void CircleUiComponent::execute(UiComponent* component) {
     std::cout << "Drawing circle" << std::endl;
 }

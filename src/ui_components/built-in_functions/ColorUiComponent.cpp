@@ -23,6 +23,6 @@ UiComponent* ColorUiComponent::parseValues(std::vector<std::string> values) {
     return new ColorUiComponent(UiType::COLOR, r, g, b);
 }
 
-void ColorUiComponent::execute() {
+void ColorUiComponent::execute(UiComponent* component) {
     std::cout << "Changing color" << std::endl;
 }

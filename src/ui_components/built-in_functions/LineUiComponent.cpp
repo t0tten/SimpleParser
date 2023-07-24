@@ -27,6 +27,6 @@ UiComponent* LineUiComponent::parseValues(std::vector<std::string> values) {
     return new LineUiComponent(UiType::LINE, x, y, xx, yy);
 }
 
-void LineUiComponent::execute() {
+void LineUiComponent::execute(UiComponent* component) {
     std::cout << "Drawing line" << std::endl;
 }

@@ -27,14 +27,14 @@ ArithmeticUiComponent* ArithmeticUiComponent::empty() {
     return new ArithmeticUiComponent(UiType::NOOP);
 }
 
-void ArithmeticUiComponent::execute() {
+void ArithmeticUiComponent::execute(UiComponent* component) {
     for (int i = 0; i < this->codeBlock.size(); i++) {
-        this->codeBlock[i]->execute();
+        this->codeBlock[i]->execute(component);
     }
 }
 
-void ArithmeticUiComponent::executeCodeBlock() {
+void ArithmeticUiComponent::executeCodeBlock(UiComponent* component) {
     for (int i = 0; i < this->codeBlock.size(); i++) {
-        this->codeBlock[i]->execute();
+        this->codeBlock[i]->execute(component);
     }
 }

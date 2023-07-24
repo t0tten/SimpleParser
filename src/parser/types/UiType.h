@@ -33,7 +33,8 @@ class UiType {
             DATE_MONTH,     // 24
             DATE_DAY,       // 25
             STEPS,          // 26
-            BATT            // 27
+            BATT,           // 27
+            INDEX           // 28
         } TYPE;
 };
 

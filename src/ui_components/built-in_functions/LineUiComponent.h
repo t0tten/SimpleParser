@@ -19,7 +19,7 @@ class LineUiComponent: public UiComponent {
         ~LineUiComponent();
 
         static UiComponent* parseValues(std::vector<std::string> values);
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 };
 
 #endif // _LINE_UI_COMPONENT_H_

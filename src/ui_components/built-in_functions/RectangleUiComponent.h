@@ -19,7 +19,7 @@ class RectangleUiComponent: public UiComponent {
         ~RectangleUiComponent();
 
         static UiComponent* parseValues(std::vector<std::string> values);
-        virtual void execute();
+        virtual void execute(UiComponent* component);
 };
 
 #endif // _RECTANGLE_UI_COMPONENT_H_

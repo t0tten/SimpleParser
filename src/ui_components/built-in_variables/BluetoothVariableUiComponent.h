@@ -21,7 +21,7 @@ class BluetoothVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~BluetoothVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };

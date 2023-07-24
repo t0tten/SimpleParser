@@ -13,7 +13,7 @@ StepsVariableUiComponent::StepsVariableUiComponent(UiType::TYPE type, std::strin
 /* PUBLIC */
 StepsVariableUiComponent::~StepsVariableUiComponent() {}
 
-std::string StepsVariableUiComponent::getValue() {
+std::string StepsVariableUiComponent::getValue(UiComponent* component) {
     std::string steps = "2758";
     return steps;
 }

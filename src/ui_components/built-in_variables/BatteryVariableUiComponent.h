@@ -21,7 +21,7 @@ class BatteryVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~BatteryVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };

@@ -21,7 +21,7 @@ class HeartVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~HeartVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };

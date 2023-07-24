@@ -13,7 +13,7 @@ BooleanVariableUiComponent::BooleanVariableUiComponent(UiType::TYPE type, std::s
 /* PUBLIC */
 BooleanVariableUiComponent::~BooleanVariableUiComponent() {}
 
-std::string BooleanVariableUiComponent::getValue() {
+std::string BooleanVariableUiComponent::getValue(UiComponent* component) {
     return this->value;
 }
 

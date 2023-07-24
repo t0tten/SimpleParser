@@ -28,7 +28,7 @@ class DateVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~DateVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };

@@ -21,7 +21,7 @@ class UiComponent {
     public:
         virtual ~UiComponent();
         std::string toString(std::string tabs);
-        virtual void execute() = 0;
+        virtual void execute(UiComponent* component) = 0;
 };
 
 #endif // _UI_COMPONENT_H_

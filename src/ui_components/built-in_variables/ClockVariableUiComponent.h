@@ -27,7 +27,7 @@ class ClockVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~ClockVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };

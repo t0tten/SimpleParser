@@ -5,6 +5,7 @@
 #include "VariableUiComponent.h"
 #include "../../parser/matchers/VariableRegexMatcher.h"
 #include "../arithmetics/IfUiComponent.h"
+#include "../arithmetics/ForUiComponent.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,7 +25,7 @@ class StringVariableUiComponent: public VariableUiComponent {
 
     public:
         virtual ~StringVariableUiComponent();
-        virtual std::string getValue();
+        virtual std::string getValue(UiComponent* component);
 
         static VariableUiComponent* create(UiType::TYPE type, std::string value);
 };
