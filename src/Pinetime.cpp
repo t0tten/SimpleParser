@@ -3,7 +3,7 @@
 Pinetime::Pinetime() {
     this->watchFace = NULL;
     this->watchFaceParser = new WatchFaceParser();
-    this->fileManagement = new FileManagement("resources/");
+    this->fileManagement = new FileManagement("examples/");
 }
 
 Pinetime::~Pinetime() {
