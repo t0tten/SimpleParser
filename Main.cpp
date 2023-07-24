@@ -9,8 +9,9 @@ int main() {
         std::cout << "Watch face does not exist!" << std::endl;
     }
 
-    //std::cout << std::endl << "PRINTING OBJECTS:" << std::endl;
-    //pinetime->printWatchFaceInformation();
+    /*std::cout << std::endl << "PRINTING OBJECTS:" << std::endl;
+    pinetime->printWatchFaceInformation();*/
+    
     std::cout << std::endl <<  "EXECUTING CODE:" << std::endl;
     pinetime->executeWatchFace();
 

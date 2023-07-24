@@ -1,8 +1,7 @@
 #include "WatchFaceParser.h"
 
 /* PRIVATES */
-bool WatchFaceParser::translate(ArithmeticUiComponent* parent, UiType::TYPE type, std::vector<std::string> fileContent, int& i) {
-    std::string parameters = this->regexMatcher->getValues(type, fileContent[i]);
+bool WatchFaceParser::translate(ArithmeticUiComponent* parent, UiType::TYPE type, std::string& parameters, std::string& filecontent) {
     std::vector<std::string> valuesArray = this->split(parameters, ',');
     switch(type) {
         case UiType::NOOP:
@@ -24,33 +23,32 @@ bool WatchFaceParser::translate(ArithmeticUiComponent* parent, UiType::TYPE type
             parent->addCodeBlockComponent(ColorUiComponent::parseValues(valuesArray));
             break;
         case UiType::IF:
-            return this->addCodeBlockComponent(parent, IfUiComponent::parseValues(parameters), fileContent, i);
+            return this->addCodeBlockComponent(parent, IfUiComponent::parseValues(parameters), filecontent);
         case UiType::ELSE_IF:
-            return this->addIfComponent(parent, IfUiComponent::parseValues(parameters), fileContent, i);
+            return this->addIfComponent(parent, IfUiComponent::parseValues(parameters), filecontent);
         case UiType::ELSE:
-            return this->addIfComponent(parent, IfUiComponent::emptyValues(), fileContent, i);
+            return this->addIfComponent(parent, IfUiComponent::emptyValues(), filecontent);
         case UiType::FOR:
-            return this->addCodeBlockComponent(parent, ForUiComponent::parseValues(parameters), fileContent, i);
+            return this->addCodeBlockComponent(parent, ForUiComponent::parseValues(parameters), filecontent);
         case UiType::ARI_END:
         default:
             return false;
     }
     return true;
 }
+bool WatchFaceParser::addCodeBlockComponent(ArithmeticUiComponent* parent, ArithmeticUiComponent* component, std::string& filecontent) {
+    parent->addCodeBlockComponent(component);
+    this->parse(component, filecontent);
+    return true;
+}
 
-bool WatchFaceParser::addIfComponent(ArithmeticUiComponent* parent, IfUiComponent* component, std::vector<std::string> fileContent, int& i) {
+bool WatchFaceParser::addIfComponent(ArithmeticUiComponent* parent, IfUiComponent* component, std::string& filecontent) {
     IfUiComponent* ifStatement = dynamic_cast<IfUiComponent*>(parent);
     if (ifStatement != nullptr) {
         ifStatement->addIfComponent(component);
-        i = this->parse(component, fileContent, ++i);
+        this->parse(component, filecontent);
     }
     return false;
-}
-
-bool WatchFaceParser::addCodeBlockComponent(ArithmeticUiComponent* parent, ArithmeticUiComponent* component, std::vector<std::string> fileContent, int& i) {
-    parent->addCodeBlockComponent(component);
-    i = this->parse(component, fileContent, ++i);
-    return true;
 }
 
 std::vector<std::string> WatchFaceParser::split(const std::string& filecontent, char delimiter) {
@@ -65,19 +63,6 @@ std::vector<std::string> WatchFaceParser::split(const std::string& filecontent, 
     return lines;
 }
 
-int WatchFaceParser::parse(ArithmeticUiComponent* parent, std::vector<std::string> fileContent, int start = 0) {
-    int i = start;
-    UiType::TYPE type = UiType::NOOP;
-    for (; i < fileContent.size(); i++) {
-        type = this->regexMatcher->match(fileContent[i]);
-        std::string arithmetic = this->regexMatcher->getValues(type, fileContent[i]);
-        if (type == UiType::MISSING || !this->translate(parent, type, fileContent, i)) {
-            break;
-        }
-    }
-    return i;
-}
-
 /* PUBLICS */
 WatchFaceParser::WatchFaceParser () {
     this->regexMatcher = new RegexMatcher();
@@ -87,11 +72,26 @@ WatchFaceParser::~WatchFaceParser () {
     delete this->regexMatcher;
 }
 
-WatchFace* WatchFaceParser::generateWatchFace(std::string filename, std::vector<std::string> fileContent) {
+void WatchFaceParser::parse(ArithmeticUiComponent* parent, std::string& filecontent) {
+    UiType::TYPE type;
+    while (type != UiType::MISSING && filecontent.size() > 0) {
+        type = this->regexMatcher->match(filecontent);
+        if (type != UiType::MISSING) {
+            std::string values = this->regexMatcher->getValues(type, filecontent);
+            if (!translate(parent, type, values, filecontent)) {
+                break;
+            }
+        } else {
+            throw ParserException(0, filecontent);
+        }
+    }
+}
+
+WatchFace* WatchFaceParser::generateWatchFace(std::string filename, std::string& filecontent) {
     ArithmeticUiComponent* parent = ArithmeticUiComponent::empty();
-    int i = this->parse(parent, fileContent);
-    if (i != fileContent.size()) {
-        throw ParserException(i + 1, fileContent[i]);
+    this->parse(parent, filecontent);
+    if (filecontent.length() != 0) {
+        throw ParserException(0, filecontent);
     }
     return new WatchFace(filename, parent);
-}
+ }

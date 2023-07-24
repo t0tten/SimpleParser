@@ -1,5 +1,6 @@
 // Testing out a comment
-if ({CLK} = "13:37") {
+if ({CLK} = "13:37")
+{
     .text(10, 10, 10, "Should draw 0");
     if ({CLK_HOUR} = "13") {
         .text(0,0,0,"Should draw 1");
@@ -20,7 +21,7 @@ if ({HEART} < "13") {
     .text(0,0,0,"Should not draw");
 } else if ({HEART} = "{HEART}") {
     for (0 to 5) {
-        .text(0,0,0,"Should draw3 ");
+        .text(0,0,0,"Should draw 3 ");
     }
 } else {
     .circle(0,0,0);

@@ -14,15 +14,14 @@ class RegexMatcher {
         std::vector<UiRegex*> regexTypes;
 
         /* FUNCTIONS */
-        UiType::TYPE matchLine(std::vector<UiRegex*> regexVector, std::string line);
-        std::string extractValuesFromLine(std::vector<UiRegex*> array, UiType::TYPE type, std::string line);
+        UiRegex* findRegexType(UiType::TYPE type);
         
     public:
         RegexMatcher();
         ~RegexMatcher();
 
-        UiType::TYPE match(std::string line);
-        std::string getValues(UiType::TYPE type, std::string line);
+        UiType::TYPE match(std::string& filecontent);
+        std::string getValues(UiType::TYPE type, std::string& filecontent);
 };
 
 #endif // _REGEX_MATCHER_H_

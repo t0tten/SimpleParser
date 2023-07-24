@@ -1,7 +1,8 @@
 #include "IfRegexMatcher.h"
 
 IfRegexMatcher::IfRegexMatcher() {
-    this->text = "[:\\{\\}\\!\\.a-zA-Z0-9 _-]";
+    //this->text = "[:\\{\\}\\!\\.a-zA-Z0-9 _-]";
+    this->text = "[:\"\\{\\}_()a-zA-Z0-9]";
     this->prefix = "[\\{\"]?" + this->text + "+[\\}\"]?[ ]*";
     this->regexOperators = "[><=!][=]?";
     this->suffix = "[ ]*[\\{\"]?" + this->text + "+[\\}\"]?";
